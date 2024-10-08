@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import Autor, Ksiazka
 from .signals import nasz_sygnal
 from django.db import transaction
-
+from django.core.mail import send_mail
 from .email_check import wyslij_email
 
 
@@ -39,7 +39,40 @@ def dodaj_do_bazy(autor, ksiazka):
         nowa_ksiazka.autor = nowy_autor
         nowa_ksiazka.save()
 
+#
+# def email(request):
+#     wyslij_email()
+#     return HttpResponse("Wysyłka testowego emaila.")
+
+
+# def email(request):
+#     if request.method == "POST":
+#         if request.POST.get("email", False):
+#             email = request.POST["email"]
+#
+#             subject = 'Testowy email z Django'
+#             message = 'To jest testowa wiadomość wysłana z Django.'
+#             email_from = "daniel.palacz@pyx.solutions"
+#             recipient_list = ['daniel.palacz@gmail.com', email]
+#
+#             send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+#             return HttpResponse(f"Wysłano testowego emaila. Adresaci: {recipient_list}")
+#
+#     return render(request, "biblioteka/email_form.html")
 
 def email(request):
-    wyslij_email()
-    return HttpResponse("Wysyłka testowego emaila.")
+    if request.method == "POST":
+        if request.POST.get("email", False):
+            email = request.POST["email"]
+
+            subject = 'Testowy email z Django - lista książek.'
+            ksiazki = ", ".join([ksiazka.tytul for ksiazka in Ksiazka.objects.all()])
+            message = '<h1>To jest testowa wiadomość wysłana z Django.</h1> Lista książek: ' + ksiazki
+            email_from = "daniel.palacz@pyx.solutions"
+            recipient_list = ['daniel.palacz@gmail.com', email]
+
+            send_mail(subject, message, email_from, recipient_list, fail_silently=False, html_message=message)
+            return HttpResponse(f"Wysłano testowego emaila. Adresaci: {recipient_list}")
+
+    return render(request, "biblioteka/email_form.html")
+
