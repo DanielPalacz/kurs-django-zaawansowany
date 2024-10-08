@@ -161,3 +161,8 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
  - w Django jest domyślnie ustawione 'auto commit true'
  - @transaction.atomic()
 ```
+
+## Email i użytkownik: wysyłanie email
+```
+ - 
+```

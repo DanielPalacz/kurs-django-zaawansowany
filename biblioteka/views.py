@@ -5,14 +5,15 @@ from .models import Autor, Ksiazka
 from .signals import nasz_sygnal
 from django.db import transaction
 
+from .email_check import wyslij_email
+
 
 def index(request):
     nasz_sygnal.send(sender=None, imie="Josh")
     autor = {"imie": "Walter", "nazwisko": "White"}
-    ksiazka = {"tytul": "Niebieskie cuda", "rok_wydanie": 2017}
+    ksiazka = {"tytul": "Niebieskie cuda", "rok_wydania": 2017}
 
     dodaj_do_bazy(autor, ksiazka)
-
     return HttpResponse("Główna strona.")
 
 
@@ -37,3 +38,8 @@ def dodaj_do_bazy(autor, ksiazka):
         nowa_ksiazka = Ksiazka(**ksiazka)
         nowa_ksiazka.autor = nowy_autor
         nowa_ksiazka.save()
+
+
+def email(request):
+    wyslij_email()
+    return HttpResponse("Wysyłka testowego emaila.")

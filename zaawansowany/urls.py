@@ -20,4 +20,5 @@ from biblioteka import views as v1
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', v1.index),
+    path('email/', v1.email),
 ]
