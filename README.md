@@ -165,3 +165,6 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 ## Email i użytkownik: wysyłanie email
 ## Email i użytkownik: Email z formularza
 ## Email i użytkownik: Informacje z bazy danych na mailu
+## Email i użytkownik: Resetowanie hasła
+
+## Email i użytkownik: Resetowanie templates
