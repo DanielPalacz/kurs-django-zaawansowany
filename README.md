@@ -116,3 +116,48 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 ```
  - ksiazka.get_gatunek_display()
 ```
+
+## Modele: Managers
+```
+ - tworzenie customowych model managerów
+```
+
+## Modele: Queryset dla managers
+```
+ - tworzenie class-based queryset
+```
+
+## Modele: Meta class dla modeli
+```
+ - <model>.Meta.db_table
+ - <model>.Meta.ordering
+ - <model>.Meta.verbose_name
+ - <model>.Meta.verbose_name_plural
+ - <model>.Meta.unique_together
+ - <model>.Meta.indexes
+ - <model>.Meta.permissions
+```
+
+
+## Modele: Signals
+```
+ - from django.db.models.signals import post_save, pre_save
+ - from django.dispatch import receiver
+```
+
+## Modele: Signal instance
+
+
+## Modele: Wczytywanie signals
+
+## Modele: Request i własny signal
+```
+ - request_finished
+ - customowy sygnał
+```
+
+## Modele: Transakcje
+```
+ - w Django jest domyślnie ustawione 'auto commit true'
+ - @transaction.atomic()
+```
