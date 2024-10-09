@@ -168,3 +168,6 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 ## Email i użytkownik: Resetowanie hasła
 
 ## Email i użytkownik: Resetowanie templates
+
+
+## Email i użytkownik: messages

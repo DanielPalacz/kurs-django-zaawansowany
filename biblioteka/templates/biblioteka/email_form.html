@@ -1,6 +1,45 @@
-<form method="post">
-    {% csrf_token %}
+<style>
 
+        /* Styl dla komunikatu sukcesu */
+    .success {
+        color: #3c763d;           /* Zielony kolor tekstu oznaczający sukces */
+        background-color: #dff0d8; /* Jasnozielone tło dla sukcesu */
+        border: 1px solid #d6e9c6; /* Obramowanie w ciemniejszym odcieniu zieleni */
+        padding: 10px;            /* Odstępy wewnętrzne */
+        margin-bottom: 15px;       /* Odstęp poniżej */
+        border-radius: 5px;        /* Zaokrąglone rogi */
+        font-weight: bold;         /* Pogrubiony tekst */
+    }
+
+    /* Styl dla komunikatu błędu */
+    .error {
+        color: #a94442;            /* Czerwony kolor tekstu oznaczający błąd */
+        background-color: #f2dede; /* Jasno-czerwone tło dla błędu */
+        border: 1px solid #ebccd1; /* Obramowanie w ciemniejszym odcieniu czerwieni */
+        padding: 10px;             /* Odstępy wewnętrzne */
+        margin-bottom: 15px;        /* Odstęp poniżej */
+        border-radius: 5px;         /* Zaokrąglone rogi */
+        font-weight: bold;          /* Pogrubiony tekst */
+    }
+
+
+</style>
+
+
+
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="{{message.tags}}">{{message}}</div><br>
+    {% endfor %}
+{% endif %}
+
+
+
+<form method="post">
+    <p>Wyślij email:</p>
+    {% csrf_token %}
     <input type="email" name="email">
     <input type="submit" value="Wyslij">
 

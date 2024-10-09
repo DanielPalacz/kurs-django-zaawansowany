@@ -122,7 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'  # lub inny serwer SMTP
 EMAIL_HOST_USER = 'apikey'
 EMAIL_PORT = 587
