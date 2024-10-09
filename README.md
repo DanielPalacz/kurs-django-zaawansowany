@@ -178,3 +178,9 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 
 
 ## Debugging: Debugger / Django Toolbar
+
+
+## Formularze i walidacja: Forms
+## Formularze i walidacja: Walidacja w modelach
+## Formularze i walidacja: Walidacja w forms
+## Formularze i walidacja: Własny walidator

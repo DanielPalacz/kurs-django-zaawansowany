@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 # from .email_check import wyslij_email
 
 from django.contrib import messages
+from .forms import NowyForm
 
 
 def index(request):
@@ -83,3 +84,14 @@ def email(request):
 
 
     return render(request, "biblioteka/email_form.html")
+
+
+def nowy_form(request):
+    if request.method == "POST":
+        form = NowyForm(request.POST)
+        if form.is_valid():
+            pass
+    else:
+        form = NowyForm()
+
+    return render(request, "biblioteka/nowy_form.html", {"form": form})

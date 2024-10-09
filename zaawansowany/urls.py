@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', v1.index),
     path('email/', v1.email),
+    path('nowy_form/', v1.nowy_form),
     path('password_reset/', PasswordResetView.as_view(), name="password_reset"),
     path('password_reset_done/',PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('password_reset_confirm/<uidb64>/<token>',PasswordResetConfirmView.as_view(), name="password_reset_confirm"),

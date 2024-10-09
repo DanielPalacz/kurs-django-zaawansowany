@@ -1,9 +1,10 @@
 from django.db import models
+from django.core.validators import MaxValueValidator
 
 # from biblioteka.managers import KsiazkaNowoczesnaManager
 # from biblioteka.managers import KsiazkaStaraManager
 from biblioteka.managers import KsiazkaManager
-
+from .validators import validate_rok
 
 class Autor(models.Model):
     imie = models.CharField(max_length=20, blank=False)
@@ -32,7 +33,8 @@ class Gatunek:
 class Ksiazka(models.Model):
 
     tytul = models.CharField(max_length=50, blank=False)
-    rok_wydania = models.IntegerField(blank=False)
+    rok_wydania = models.IntegerField(blank=False, validators=[MaxValueValidator(2020)])
+    # rok_wydania = models.IntegerField(blank=False, validators=[validate_rok])
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, related_name="ksiazki")
     gatunek = models.PositiveSmallIntegerField(choices=Gatunek.GATUNKI, default=0)
 
@@ -40,6 +42,12 @@ class Ksiazka(models.Model):
     # nowoczesne = KsiazkaNowoczesnaManager()
     # stare = KsiazkaStaraManager()
     ksiazki = KsiazkaManager()
+
+    def save(self, *args, **kwargs):
+        validate_rok(self.rok_wydania)
+        # if int(self.rok_wydania) > 2020:
+        #     raise ValueError("Rok wydania jest większy od 2020.")
+        # super(Ksiazka, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.tytul
