@@ -177,3 +177,4 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 ## Debugging: Własne logi
 
 
+## Debugging: Debugger / Django Toolbar

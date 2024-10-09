@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from biblioteka import views as v1
@@ -29,3 +30,7 @@ urlpatterns = [
     path('password_reset_confirm/<uidb64>/<token>',PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('password_reset_complete/',PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]
+
+if settings.DEBUG:
+    from debug_toolbar.toolbar import debug_toolbar_urls
+    urlpatterns += debug_toolbar_urls()
