@@ -171,3 +171,9 @@ Zainstalowanie i skonfigurowanie django-extensions / ipython (requirements_exten
 
 
 ## Email i użytkownik: messages
+
+
+## Debugging: Logi w Django
+## Debugging: Własne logi
+
+
